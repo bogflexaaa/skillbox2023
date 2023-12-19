@@ -1,0 +1,25 @@
+class PairOfElement:
+    def __init__(self, *lst):
+        self.lst = lst
+        self.index = 0
+
+    def __next__(self):
+        if self.index >= len(self.lst):
+            raise StopIteration
+        pair = (self.lst[self.index], self.lst[self.index + 1] if self.index + 1 < len(self.lst) else None)
+        self.index += 2
+        return pair
+
+    def __iter__(self):
+        return self
+
+
+lst = PairOfElement(1, 2, 3, 4)
+for pair in lst:
+    print(pair)
+
+print()
+
+lst = PairOfElement(1, 2, 3, 4, 5)
+for pair in lst:
+    print(pair)
